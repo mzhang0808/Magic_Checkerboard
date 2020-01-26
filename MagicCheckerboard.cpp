@@ -102,7 +102,7 @@ long findMinSumIfEvenEven(vector<vector<long>> board){
                 board[i][j] = max(t+1, l+2);
             }
             //Rows must be same parity
-            else if( i%2!=board[i][j]%2 ) 
+            else if( i%2!=board[i][j]%2 
                 || board[i][j] <= l || board[i][j] <= t){
                     return INT_MAX;
             }
