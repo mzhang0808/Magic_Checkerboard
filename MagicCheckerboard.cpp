@@ -102,7 +102,7 @@ long findMinSumIfEvenEven(vector<vector<long>> board){
             //Rows must be same parity
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
                 || board[i][j] <= l || board[i][j] <= t){
-                    return -1;
+                    return INT_MAX;
             }
             s += board[i][j];
         }
@@ -129,7 +129,7 @@ long findMinSumIfOddEven(vector<vector<long>> board){
             //Columns must be same parity, rows must alternate
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
                 || board[i][j] <= l || board[i][j] <= t){
-                    return -1;
+                    return INT_MAX;
             }
             s += board[i][j];
         }
@@ -153,7 +153,7 @@ long findMinSumIfEvenOdd(vector<vector<long>> board){
             //Columns must be same parity, rows must alternate
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
                 || board[i][j] <= l || board[i][j] <= t){
-                    return -1;
+                    return INT_MAX;
             }
             s += board[i][j];
         }
@@ -180,7 +180,7 @@ long findMinSumIfOddOdd(vector<vector<long>>& board){
             //Rows must be same parity
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
                 || board[i][j] <= l || board[i][j] <= t){
-                    return -1;
+                    return INT_MAX;
             }
             s += board[i][j];
         }
@@ -206,6 +206,11 @@ int main(){
         cout << widthIsOne(board);
     }
     else{
-        cout << min(findMinSumIfEvenEven(board), findMinSumIfEvenOdd(board));
+        int a = min(findMinIfEvenEven(board), findMinIfEvenOdd(board));
+        int b = min(findMinIfOddOdd(board), findMinIfOddEven(board));
+        int c = min(a, b);
+        if(c == INT_MAX){
+            cout << -1;
+        }
     }
 }
