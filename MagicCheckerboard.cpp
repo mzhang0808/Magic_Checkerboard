@@ -54,7 +54,6 @@ long long widthIsOne(vector<vector<long long>>& board){
             else{
                 board[i][0] = board[i-1][0] + 1;
             }
-            s+=board[i][0];
         }
         else{
             //Check that increasing property is upheld
