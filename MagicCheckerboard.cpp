@@ -225,5 +225,8 @@ int main(){
         if(c == INT_MAX){
             cout << -1;
         }
+        else{
+            cout << c;
+        }
     }
 }
