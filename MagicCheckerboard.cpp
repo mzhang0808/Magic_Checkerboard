@@ -88,7 +88,7 @@ void assignLeft(vector<vector<long>> board, long r, long c, long& val){
 
 //Begins with Even Even {e.g. 2 4} --> columns must be same parity
 long findMinSumIfEvenEven(vector<vector<long>> board){
-    cout << "findMinSumIfEvenEven";
+    cout << "findMinSumIfEvenEven" << endl;
     long s = 0;
     long t = 0;
     long l = 0;
@@ -102,7 +102,7 @@ long findMinSumIfEvenEven(vector<vector<long>> board){
                 board[i][j] = max(t+1, l+2);
             }
             //Rows must be same parity
-            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
+            else if( i%2!=board[i][j]%2 ) 
                 || board[i][j] <= l || board[i][j] <= t){
                     return INT_MAX;
             }
@@ -132,7 +132,7 @@ long findMinSumIfOddEven(vector<vector<long>> board){
                 board[i][j] = max(t+2, l+1);
             }
             //Columns must be same parity, rows must alternate
-            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
+            else if( j%2==board[i][j]%2 
                 || board[i][j] <= l || board[i][j] <= t){
                     return INT_MAX;
             }
@@ -159,7 +159,7 @@ long findMinSumIfEvenOdd(vector<vector<long>> board){
                 board[i][j] = max(t+2, l+1);
             }
             //Columns must be same parity, rows must alternate
-            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
+            else if( j%2!=board[i][j]%2  
                 || board[i][j] <= l || board[i][j] <= t){
                     return INT_MAX;
             }
@@ -189,7 +189,7 @@ long findMinSumIfOddOdd(vector<vector<long>>& board){
                 board[i][j] = max(t+1, l+2);
             }
             //Rows must be same parity
-            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
+            else if( i%2==board[i][j]%2  
                 || board[i][j] <= l || board[i][j] <= t){
                     return INT_MAX;
             }
