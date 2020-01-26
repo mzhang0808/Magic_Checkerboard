@@ -88,7 +88,7 @@ void assignLeft(vector<vector<long>> board, long r, long c, long& val){
 
 //Begins with Even Even {e.g. 2 4} --> columns must be same parity
 long findMinSumIfEvenEven(vector<vector<long>> board){
-    cout << "findMinSumIfEvenEven" << endl;
+    //cout << "findMinSumIfEvenEven" << endl;
     long s = 0;
     long t = 0;
     long l = 0;
@@ -107,15 +107,15 @@ long findMinSumIfEvenEven(vector<vector<long>> board){
                     return INT_MAX;
             }
             s += board[i][j];
-            cout << board[i][j];
+            //cout << board[i][j];
         }
-        cout << endl;
+        //cout << endl;
     }
     return s;
 }
 
 long findMinSumIfOddEven(vector<vector<long>> board){
-    cout << "findMinSumIfOddEven" << endl;
+    //cout << "findMinSumIfOddEven" << endl;
     if(board[0][0] == 0){
         board[0][0] = 1;
     }
@@ -137,15 +137,15 @@ long findMinSumIfOddEven(vector<vector<long>> board){
                     return INT_MAX;
             }
             s += board[i][j];
-            cout << board[i][j];
+            //cout << board[i][j];
         }
-        cout << endl;
+        //cout << endl;
     }
     return s;
 }
 
 long findMinSumIfEvenOdd(vector<vector<long>> board){
-    cout << "findMinSumIfEvenOdd" << endl;
+    //cout << "findMinSumIfEvenOdd" << endl;
     long s = 0;
     long t = 0;
     long l = 0;
@@ -164,15 +164,15 @@ long findMinSumIfEvenOdd(vector<vector<long>> board){
                     return INT_MAX;
             }
             s += board[i][j];
-            cout << board[i][j];
+            //cout << board[i][j];
         }
-        cout << endl;
+        //cout << endl;
     }
     return s;
 }
 
 long findMinSumIfOddOdd(vector<vector<long>>& board){
-    cout << "findMinSumIfOddOdd" << endl;
+    //cout << "findMinSumIfOddOdd" << endl;
     if(board[0][0] == 0){
         board[0][0] = 1;
     }
@@ -194,9 +194,9 @@ long findMinSumIfOddOdd(vector<vector<long>>& board){
                     return INT_MAX;
             }
             s += board[i][j];
-            cout << board[i][j] << " ";
+            //cout << board[i][j] << " ";
         }
-        cout << endl;
+        //cout << endl;
     }
     return s;
 }
