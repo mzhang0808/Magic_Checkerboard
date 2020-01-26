@@ -9,10 +9,10 @@ long heightIsOne(vector<vector<long>>& board);
 long widthIsOne(vector<vector<long>>& board);
 void assignTop(vector<vector<long>> board, long r, long c, long& val);
 void assignLeft(vector<vector<long>> board, long r, long c, long& val);
-long findMinIfEvenEven(vector<vector<long>> board);
-long findMinIfEvenOdd(vector<vector<long>> board);
-long findMinIfOddEven(vector<vector<long>> board);
-long findMinIfOddOdd(vector<vector<long>>& board);
+long findMinSumIfEvenEven(vector<vector<long>> board);
+long findMinSumIfEvenOdd(vector<vector<long>> board);
+long findMinSumIfOddEven(vector<vector<long>> board);
+long findMinSumIfOddOdd(vector<vector<long>>& board);
 
 //If height is 1
 long heightIsOne(vector<vector<long>>& board){
@@ -207,8 +207,8 @@ int main(){
         cout << widthIsOne(board);
     }
     else{
-        int a = min(findMinIfEvenEven(board), findMinIfEvenOdd(board));
-        int b = min(findMinIfOddOdd(board), findMinIfOddEven(board));
+        int a = min(findMinSumIfEvenEven(board), findMinSumIfEvenOdd(board));
+        int b = min(findMinSumIfOddOdd(board), findMinSumIfOddEven(board));
         int c = min(a, b);
         if(c == INT_MAX){
             cout << -1;
