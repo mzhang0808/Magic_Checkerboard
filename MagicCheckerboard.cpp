@@ -97,13 +97,37 @@ long findMinSumIfEvenEven(vector<vector<long>> board){
             //Need to change value to minimum possible
             if(board[i][j] == 0){
                 //to ensure that it stays in increasing order
-                board[i][j] = max(t, l) + 1;
-                if(j!=0 && board[i][j] % 2 != board[i][j-1]){
-                    board[i][j]++;
-                }
+                board[i][j] = max(t+1, l+2);
             }
             //Rows must be same parity
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
+                || board[i][j] <= l || board[i][j] <= t){
+                    return -1;
+            }
+            s += board[i][j];
+        }
+    }
+    return s;
+}
+
+long findMinSumIfOddEven(vector<vector<long>> board){
+    if(board[0][0] == 0){
+        board[0][0] = 1;
+    }
+    long s = 0;
+    long t = 0;
+    long l = 0;
+    for(long i=0;i<board.size();i++){
+        for(long j=0;j<board[0].size();j++){
+            assignTop(board, i, j, t);
+            assignLeft(board, i, j, l);
+            //Need to change value to minimum possible
+            if(board[i][j] == 0){
+                //to ensure that it stays in increasing order
+                board[i][j] = max(t+2, l+1);
+            }
+            //Columns must be same parity, rows must alternate
+            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
                 || board[i][j] <= l || board[i][j] <= t){
                     return -1;
             }
@@ -124,10 +148,7 @@ long findMinSumIfEvenOdd(vector<vector<long>> board){
             //Need to change value to minimum possible
             if(board[i][j] == 0){
                 //to ensure that it stays in increasing order
-                board[i][j] = max(t, l) + 1;
-                if(j!=0 && board[i][j] % 2 == board[i][j-1]){
-                    board[i][j]++;
-                }
+                board[i][j] = max(t+2, l+1);
             }
             //Columns must be same parity, rows must alternate
             else if( ( (i!=0) && ((board[i][j] % 2) == (board[i][j-1] % 2))) 
@@ -140,15 +161,34 @@ long findMinSumIfEvenOdd(vector<vector<long>> board){
     return s;
 }
 
-long findMinSumIfOddEven(vector<vector<long>> board){
-    return 0;
-}
-
 long findMinSumIfOddOdd(vector<vector<long>>& board){
-    return 0;
+    if(board[0][0] == 0){
+        board[0][0] = 1;
+    }
+    long s = 0;
+    long t = 0;
+    long l = 0;
+    for(long i=0;i<board.size();i++){
+        for(long j=0;j<board[0].size();j++){
+            assignTop(board, i, j, t);
+            assignLeft(board, i, j, l);
+            //Need to change value to minimum possible
+            if(board[i][j] == 0){
+                //to ensure that it stays in increasing order
+                board[i][j] = max(t+1, l+2);
+            }
+            //Rows must be same parity
+            else if( ( (i!=0) && ((board[i][j] % 2) == (board[i-1][j] % 2))) 
+                || board[i][j] <= l || board[i][j] <= t){
+                    return -1;
+            }
+            s += board[i][j];
+        }
+    }
+    return s;
 }
 
-long main(){
+int main(){
     long r = 0, c = 0;
     cin >> r >> c;
     vector<vector<long>> board(r,vector<long>(c));
@@ -166,6 +206,6 @@ long main(){
         cout << widthIsOne(board);
     }
     else{
-        cout << max(findMinSumIfEvenEven(board), findMinSumIfEvenOdd(board));
+        cout << min(findMinSumIfEvenEven(board), findMinSumIfEvenOdd(board));
     }
 }
